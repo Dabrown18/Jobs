@@ -1,0 +1,6 @@
+export const BLACK = '#232323'
+export const NAVY = '#2f3649'
+export const GRAY = '#777'
+export const BLUE = '#bbdefb'
+export const BEIGE = '#faf8ec'
+export const WHITE = '#fff'
