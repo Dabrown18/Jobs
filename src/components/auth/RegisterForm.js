@@ -23,13 +23,12 @@ import DualPicker from '../DualPicker';
 import AuthScreen from '../../screens/AuthScreen';
 import RegistrationScreen from '../../screens/RegistrationScreen';
 
-const logo = require('../../images/logo.png');
-
 export default class RegisterForm extends Component {
 
   constructor(props) {
     super(props);
     this.state = {
+      username: '',
       firstname: '',
       lastname: '',
       age: 10,
@@ -43,15 +42,15 @@ export default class RegisterForm extends Component {
   }
 
   register() {
-    let { firstname, lastname, age, email, password } = this.state
+    let { username, firstname, lastname, age, email, password } = this.state
     let sex = this.refs.sexPicker.state.selected.toLowerCase()
-    let user = { firstname, lastname, age, email, password }
+    let user = { username, firstname, lastname, age, email, password }
 
     console.log('called signup with ', email, password);
 
     firebaseApp.auth().createUserWithEmailAndPassword(email, password)
       .then(user => {
-        addUser({ firstname, lastname, age, email, password }, user.uid)
+        addUser({ username, firstname, lastname, age, email, password }, user.uid)
       })
       .catch(error => {this.setState({feedback: error.message})})
   }
@@ -63,9 +62,15 @@ export default class RegisterForm extends Component {
 
           <View style={RegisterStyles.content}>
 
-            <Image source={logo} style={RegisterStyles.logo}/>
-
             <View style={RegisterStyles.inputContainer}>
+
+              <TextInput
+                value={this.state.username}
+                onChangeText={firstname => this.setState({ Username })}
+                autoCorrect={false}
+                placeholder="Username"
+                style={RegisterStyles.input}
+              />
 
               <TextInput
                 value={this.state.firstname}
@@ -162,6 +167,7 @@ const RegisterStyles = StyleSheet.create({
     borderWidth: 1,
     borderColor: '#fff',
     backgroundColor: 'rgba(137,178,224,0.2)',
+    borderRadius: 8
   },
   input: {
     fontSize: 16,
@@ -169,13 +175,15 @@ const RegisterStyles = StyleSheet.create({
     padding: 10,
     marginBottom: 10,
     backgroundColor: 'rgba(255,255,255,1)',
-    textAlign: 'center'
+    textAlign: 'center',
+    borderRadius: 8
   },
   buttonContainer: {
     marginBottom: 10,
     padding: 10,
     borderColor: '#fff',
-    backgroundColor: '#89b2e0'
+    backgroundColor: '#89b2e0',
+    borderRadius: 8
   },
   buttonText: {
     fontSize: 16,
@@ -188,7 +196,8 @@ const RegisterStyles = StyleSheet.create({
     margin: 20,
     padding: 20,
     borderColor: '#fff',
-    backgroundColor: '#89b2e0'
+    backgroundColor: '#89b2e0',
+    borderRadius: 8
   },
   registerText: {
     fontSize: 16,

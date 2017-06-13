@@ -15,12 +15,15 @@ export default class Slides extends Component {
   renderLastSlide(index) {
     if (index === this.props.data.length - 1) {
       return (
-        <Button
-          title='Level Up'
-          raised
-          buttonStyle={styles.buttonStyle}
-          onPress={this.props.onComplete}
-        />
+        <View style={styles.buttonStyle}>
+          <Button
+            title='Get Started'
+            raised
+            onPress={this.props.onComplete}
+            color='#fff'
+          />
+        </View>
+
       );
     }
   }
@@ -65,7 +68,10 @@ const styles = StyleSheet.create({
     textAlign: 'center'
   },
   buttonStyle: {
-    backgroundColor: '#0288d1',
-    marginTop: 15
+    marginBottom: 8,
+    padding: 8,
+    borderColor: '#fff',
+    backgroundColor: '#89b2e0',
+    borderRadius: 8
   },
 });

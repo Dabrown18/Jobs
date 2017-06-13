@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { TabNavigator, StackNavigator } from 'react-navigation';
 
-import { MainNavigator } from './src/router';
+import { MainNavigator, Authentication, WelcomeTab } from './src/router';
 
 class App extends Component {
 

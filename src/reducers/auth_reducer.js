@@ -1,6 +1,6 @@
 import { SET_USER, UPDATE_USER, LOGIN_FAIL } from '../actions/types';
 
-let auth = {
+let user = {
   email: null,
   name: null,
   sex: null,
@@ -10,23 +10,23 @@ let auth = {
   bio: null,
 }
 
-export default (state = auth, action) => {
+export default (state = user, action) => {
   switch(action.type) {
 
     case SET_USER:
-      auth = action.payload;
-      return auth;
+      user = action.payload;
+      return user;
 
     case LOGIN_FAIL:
-      auth = null
-      return auth;
+      user = null
+      return user;
 
     case UPDATE_USER:
       console.log('received update user action');
       for (var key in action.payload) {
-        auth[key] = action.payload[key];
+        user[key] = action.payload[key];
       }
-      return auth;
+      return user;
 
     default:
       return state;

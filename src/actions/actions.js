@@ -1,7 +1,21 @@
 import { AsyncStorage } from 'react-native';
 import types from './types';
+import { LOAD_NEWS, SEARCH_NEWS } from './types';
+import mockData from '../mockData.json';
 
-function receiveUser(json, uid) {
+
+export const loadNews = () => ({
+  type: LOAD_NEWS,
+  payload: mockData
+});
+
+export const searchNews = searchTerm => ({
+  type: SEARCH_NEWS,
+  payload: searchTerm
+});
+
+
+export function receiveUser(json, uid) {
   return {
     type: types.SET_USER,
     payload: {...json, uid}

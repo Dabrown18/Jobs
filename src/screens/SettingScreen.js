@@ -1,17 +1,31 @@
 import React, { Component } from 'react';
-import { View, Text } from 'react-native';
+import { ScrollView, TouchableOpacity } from 'react-native';
+import { List, ListItem } from 'react-native-elements';
 
-export default class SettingScreen extends Component {
+export default class Settings extends Component {
   render() {
     return (
-      <View>
-        <Text>SettingScreen</Text>
-        <Text>SettingScreen</Text>
-        <Text>SettingScreen</Text>
-        <Text>SettingScreen</Text>
-        <Text>SettingScreen</Text>
-        <Text>SettingScreen</Text>
-      </View>
+      <ScrollView>
+        <List>
+          <ListItem
+            title="Notifications"
+          />
+          <ListItem
+            title="Profile"
+          />
+          <ListItem
+            title="Password"
+          />
+        </List>
+        <List>
+          <TouchableOpacity>
+            <ListItem
+              title="Sign Out"
+              rightIcon={{ name: 'cancel' }}
+            />
+          </TouchableOpacity>
+        </List>
+      </ScrollView>
     );
   }
 }

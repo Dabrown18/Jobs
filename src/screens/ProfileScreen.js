@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
-import { View, Text, Platform, Button } from 'react-native';
+import { ScrollView, Button, Platform } from 'react-native';
+import { Tile, List, ListItem} from 'react-native-elements';
 
+const profilePhoto = require('../images/profile.jpg')
 
 export default class ProfileScreen extends Component {
 
@@ -16,18 +18,32 @@ export default class ProfileScreen extends Component {
     style: {
       marginTop: Platform.OS === 'android' ? 24 : 0
     }
-  });
+  })
+
+  handleSettingsPress = () => {
+    this.props.navigation.navigate('Settings');
+  };
 
   render() {
     return (
-      <View>
-        <Text>ProfileScreen</Text>
-        <Text>ProfileScreen</Text>
-        <Text>ProfileScreen</Text>
-        <Text>ProfileScreen</Text>
-        <Text>ProfileScreen</Text>
-        <Text>ProfileScreen</Text>
-      </View>
+      <ScrollView>
+        <Tile
+          source={profilePhoto}
+          featured
+        />
+
+        <List>
+          <ListItem
+            title="First Name"
+            hideChevron
+          />
+          <ListItem
+            title="Last Name"
+            hideChevron
+          />
+        </List>
+
+      </ScrollView>
     );
   }
 }

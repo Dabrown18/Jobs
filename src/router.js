@@ -2,27 +2,31 @@ import React from 'react';
 import { TabNavigator, StackNavigator } from 'react-navigation';
 
 import AuthScreen from './screens/AuthScreen';
-import DeckScreen from './screens/DeckScreen';
-import MapScreen from './screens/MapScreen';
+import SearchScreen from './screens/SearchScreen';
+import HomeScreen from './screens/HomeScreen';
 import ProfileScreen from './screens/ProfileScreen';
 import RegistrationScreen from './screens/RegistrationScreen';
 import SettingScreen from './screens/SettingScreen';
 import WelcomeScreen from './screens/WelcomeScreen';
+import BookmarkScreen from './screens/BookmarkScreen';
+import StoryScreen from './screens/StoryScreen';
 
 export const MainNavigator = TabNavigator({
-   welcome: { screen: WelcomeScreen },
-   auth: {
+   Welcome: { screen: WelcomeScreen },
+   Auth: {
      screen: TabNavigator({
-       auth: { screen: AuthScreen },
-       register: { screen: RegistrationScreen },
-       home: {
+       Auth: { screen: AuthScreen },
+       Register: { screen: RegistrationScreen },
+       Home: {
          screen: TabNavigator({
-           map: { screen: MapScreen },
-           deck: { screen: DeckScreen },
-           profile: {
+           Search: { screen: SearchScreen },
+           Home: { screen: HomeScreen },
+           Story: { screen: StoryScreen },
+           Bookmark: { screen: BookmarkScreen},
+           Profile: {
              screen: StackNavigator({
-               profile: { screen: ProfileScreen, header: { visible:false } },
-               settings: { screen: SettingScreen }
+               Profile: { screen: ProfileScreen, header: { visible:false } },
+               Settings: { screen: SettingScreen }
              })
            }
          })
@@ -31,12 +35,13 @@ export const MainNavigator = TabNavigator({
    }
  });
 
-export const Authentication = StackNavigator({
-  auth: { screen: AuthScreen },
-  register: {
-    screen: RegistrationScreen,
-    navigationOptions: ({ navigation }) => ({
-      title: 'Create an Account'
-    }),
-  },
+export const Authentication = TabNavigator({
+  Auth: { screen: AuthScreen },
+  Register: { screen: RegistrationScreen},
+  Home: { screen: HomeScreen}
+});
+
+export const WelcomeTab = TabNavigator({
+  Welcome: { screen: WelcomeScreen},
+  Auth: { screen: AuthScreen }
 });

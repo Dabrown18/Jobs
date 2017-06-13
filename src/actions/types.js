@@ -9,3 +9,7 @@ export const SUBMIT_COMMENT = 'SUBMIT_COMMENT';
 
 // other app constants
 export const USER_TOKEN = 'USER_TOKEN';
+
+// NewsFeed
+export const LOAD_NEWS = 'LOAD_NEWS';
+export const SEARCH_NEWS = 'SEARCH_NEWS';

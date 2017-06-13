@@ -24,10 +24,6 @@ const logo = require('../../images/logo.png')
 
 export default class LoginForm extends Component {
 
-  onRegister = () => {
-    this.props.navigation.navigate('register');
-  };
-
   constructor(props) {
     super(props);
     this.state = {
@@ -36,7 +32,7 @@ export default class LoginForm extends Component {
       error: '',
       loading: false,
       showForm: false,
-      tokenExists: false,
+      tokenExists: false
     };
   }
 

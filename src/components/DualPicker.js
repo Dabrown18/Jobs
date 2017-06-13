@@ -67,7 +67,8 @@ const DualStyles = StyleSheet.create({
     backgroundColor: 'rgba(255,255,255,1)',
     borderColor: '#fff',
     flexDirection: 'row',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    borderRadius: 8
   },
   PickerOption: {
     flex: 1
@@ -75,7 +76,7 @@ const DualStyles = StyleSheet.create({
   PickerBox: {
     flex: 1,
     justifyContent: 'center',
-    alignItems: 'center',
+    alignItems: 'center'
   },
   PickerText: {
     color: '#ccc',
