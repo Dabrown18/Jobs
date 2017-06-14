@@ -66,7 +66,7 @@ export default class RegisterForm extends Component {
 
               <TextInput
                 value={this.state.username}
-                onChangeText={firstname => this.setState({ Username })}
+                onChangeText={username => this.setState({ username })}
                 autoCorrect={false}
                 placeholder="Username"
                 style={RegisterStyles.input}

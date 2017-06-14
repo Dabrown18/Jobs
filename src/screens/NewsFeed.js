@@ -13,7 +13,7 @@ export default class NewsFeed extends Component {
     });
 
     this.state = {
-      dataSource: this.ds.cloneWithRows(props.news),
+      dataSource: this.ds.cloneWithRows(props),
       initialLoading: true,
       modalVisible: false,
       refreshing: false,

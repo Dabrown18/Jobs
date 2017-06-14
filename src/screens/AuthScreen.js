@@ -95,7 +95,7 @@ export default class AuthScreen extends Component {
     switch (this.state.loggedIn) {
 
       case true:
-        this.props.navigation.navigate('map')
+        this.props.navigation.navigate('Home')
 
       case false:
         return <LoginForm />;
@@ -106,7 +106,7 @@ export default class AuthScreen extends Component {
   }
 
   register = () => {
-    this.props.navigation.navigate('register');
+    this.props.navigation.navigate('Register');
   };
 
   render() {
