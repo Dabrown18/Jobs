@@ -10,7 +10,8 @@ import {
   Keyboard,
   StyleSheet,
   Button,
-  Platform
+  Platform,
+  ScrollView
 } from 'react-native';
 import { connect } from 'react-redux';
 
@@ -21,8 +22,9 @@ import { USER_TOKEN } from '../actions/types';
 import * as actions from '../actions/types';
 import DualPicker from '../components/DualPicker';
 import Header from '../components/Header';
+import Category from './CategoryScreen';
 
-const logo = require('../images/logo.png')
+const logo = require('../images/brokenHeart.png')
 
 export default class StoryScreen extends Component {
 
@@ -37,11 +39,15 @@ export default class StoryScreen extends Component {
   }
 
   static navigationOptions = ({ navigation }) => ({
-    title: 'Story',
+    title: 'Your Information',
+    headerLeft:
+      <Button
+        title=''
+      />,
     headerRight:
       <Button
         title='Next'
-        onPress={() => { navigation.navigate('Settings'); }}
+        onPress={() => { navigation.navigate('Category'); }}
         backgroundColor='rgba(0,0,0,0)'
         color='rgba(0,122,255,1)'
       />,
@@ -50,52 +56,56 @@ export default class StoryScreen extends Component {
     }
   })
 
-  handleSettingsPress = () => {
-    this.props.navigation.navigate('Settings');
-  };
-
   render() {
 
     return (
-      <View style={styles.container}>
 
-        <Image source={logo} style={styles.logo}/>
+      <View style={styles.container}>
 
           <View style={styles.content}>
 
             <View style={styles.inputContainer}>
 
-              <Text style={styles.inputText}>Title:</Text>
+              <ScrollView>
 
-              <TextInput
-                onChangeText={title => this.setState({ title })}
-                autoCorrect={false}
-                placeholder="Title"
-                style={styles.input}
-              />
+                <Text style={styles.inputText}>Title:</Text>
 
-              <Text style={styles.inputText}>Age:</Text>
+                <TextInput
+                  onChangeText={title => this.setState({ title })}
+                  autoCorrect={false}
+                  placeholder="Story title"
+                  style={styles.input}
+                />
 
-              <TextInput
-                placeholder='Age'
-                style={styles.input}
-                onChangeText={age => this.setState({ age })}
-                keyboardType={'number-pad'}
-              />
+                <Text style={styles.inputText}>Age:</Text>
 
-              <Text style={styles.inputText}>Your sex:</Text>
+                <TextInput
+                  placeholder='Your age'
+                  style={styles.input}
+                  onChangeText={age => this.setState({ age })}
+                  keyboardType={'number-pad'}
+                />
 
-              <DualPicker
-                title='Gender'
-                options={[{symbol: '♂', title: 'Male'}, {symbol: '♀', title: 'Female'}]}
-                ref="sexPicker"
-              />
+                <Text style={styles.inputText}>Your sex:</Text>
+
+                <DualPicker
+                  title='Gender'
+                  options={[{symbol: '♂', title: 'Male'}, {symbol: '♀', title: 'Female'}]}
+                  ref="sexPicker"
+                />
+
+              </ScrollView>
 
             </View>
 
+
+
           </View>
 
+          <Image source={logo} style={styles.logo}/>
+
       </View>
+
     );
   }
 }
@@ -120,12 +130,10 @@ const styles = StyleSheet.create({
     flex: 8.5,
   },
   logo: {
-    width: 350,
-    height: 100,
-    alignItems: 'flex-start',
+    width: 365,
+    height: 137,
+    alignItems: 'center',
     justifyContent: 'center',
-    resizeMode: 'contain',
-    marginTop: 20
   },
   inputContainer: {
     marginRight: 20,
@@ -136,7 +144,7 @@ const styles = StyleSheet.create({
     alignSelf: 'stretch',
     borderWidth: 1,
     borderColor: '#fff',
-    backgroundColor: 'rgba(137,178,224,0.2)',
+    backgroundColor: '#88b0d3',
     borderRadius: 8
   },
   input: {
@@ -191,8 +199,8 @@ const styles = StyleSheet.create({
   },
   inputText: {
     fontSize: 20,
-    color: '#000',
-    textShadowColor: '#fff',
+    color: '#fff',
+    textShadowColor: '#000',
     textShadowOffset: { width: 2, height: 2 },
     textShadowRadius: 5,
     marginBottom: 5

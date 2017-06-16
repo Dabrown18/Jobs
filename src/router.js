@@ -11,7 +11,10 @@ import SettingScreen from './screens/SettingScreen';
 import WelcomeScreen from './screens/WelcomeScreen';
 import BookmarkScreen from './screens/BookmarkScreen';
 import StoryScreen from './screens/StoryScreen';
-//import CategoryScreen from './screens/CategoryScreen';
+import CategoryScreen from './screens/CategoryScreen';
+import ImageScreen from './screens/ImageScreen';
+import DetailsScreen from './screens/DetailsScreen';
+import SubmitScreen from './screens/SubmitScreen';
 
 export const MainNavigator = TabNavigator({
       Welcome: { screen: WelcomeScreen },
@@ -36,11 +39,10 @@ export const MainNavigator = TabNavigator({
           Story: {
             screen: StackNavigator({
               Story: { screen: StoryScreen },
-              Catergory: {
-                screen: StackNavigator({
-                  Category: { screen: SettingScreen }
-                })
-              }
+              Category: { screen: CategoryScreen },
+              Image: { screen: ImageScreen },
+              Details: { screen: DetailsScreen },
+              Submit: { screen: SubmitScreen }
             }),
             navigationOptions: {
               tabBarLabel: 'Story',
