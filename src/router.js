@@ -19,7 +19,11 @@ import SubmitScreen from './screens/SubmitScreen';
 export const MainNavigator = TabNavigator({
       Welcome: { screen: WelcomeScreen },
       Auth: { screen: AuthScreen },
-      Register: { screen: RegistrationScreen },
+      Register: {
+        screen: StackNavigator({
+          Register: { screen: RegistrationScreen}
+        })
+      },
       Main: {
         screen: TabNavigator({
           Search: {

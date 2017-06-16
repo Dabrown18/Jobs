@@ -28,6 +28,20 @@ export default class Register extends Component {
     }
   }
 
+  static navigationOptions = ({ navigation }) => ({
+    title: 'Register',
+    headerLeft:
+        <Button
+          title='Back'
+          onPress={() => { navigation.navigate('Auth'); }}
+          backgroundColor='rgba(0,0,0,0)'
+          color='rgba(0,122,255,1)'
+        />,
+    style: {
+      marginTop: Platform.OS === 'android' ? 24 : 0
+    }
+  })
+
   render() {
 
     return (

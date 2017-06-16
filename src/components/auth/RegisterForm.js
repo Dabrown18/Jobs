@@ -20,8 +20,7 @@ import { USER_TOKEN } from '../../actions/types';
 import * as actions from '../../actions/types';
 import DualPicker from '../DualPicker';
 
-import AuthScreen from '../../screens/AuthScreen';
-import RegistrationScreen from '../../screens/RegistrationScreen';
+const logo = require('../../images/logo.png')
 
 export default class RegisterForm extends Component {
 
@@ -31,28 +30,29 @@ export default class RegisterForm extends Component {
       username: '',
       firstname: '',
       lastname: '',
-      age: 10,
       email: '',
       password: '',
-      error: '',
+      password_confirmation: '',
+      error: [],
       loading: false,
       showForm: false,
       tokenExists: false
     };
   }
 
-  register() {
-    let { username, firstname, lastname, age, email, password } = this.state
-    let sex = this.refs.sexPicker.state.selected.toLowerCase()
-    let user = { username, firstname, lastname, age, email, password }
+  onRegisterPressed() {
+    let { username, firstname, lastname, email, password } = this.state
+    let user = { username, firstname, lastname, email, password }
 
     console.log('called signup with ', email, password);
 
     firebaseApp.auth().createUserWithEmailAndPassword(email, password)
       .then(user => {
-        addUser({ username, firstname, lastname, age, email, password }, user.uid)
+        addUser({ username, firstname, lastname, email, password }, user.uid)
+        console.log('User successfully added')
       })
-      .catch(error => {this.setState({feedback: error.message})})
+      .catch(error => {this.setState({feedback: error.message})});
+      console.log('User not added')
   }
 
   render() {
@@ -88,19 +88,6 @@ export default class RegisterForm extends Component {
               />
 
               <TextInput
-                placeholder='Age'
-                style={RegisterStyles.input}
-                onChangeText={age => this.setState({ age })}
-                keyboardType={'number-pad'}
-              />
-
-              <DualPicker
-                title='Gender'
-                options={[{symbol: '♂', title: 'Male'}, {symbol: '♀', title: 'Female'}]}
-                ref="sexPicker"
-              />
-
-              <TextInput
                 value={this.state.email}
                 onChangeText={email => this.setState({ email })}
                 autoCorrect={false}
@@ -116,14 +103,22 @@ export default class RegisterForm extends Component {
                 style={RegisterStyles.input}
               />
 
+              <TextInput
+                value={this.state.password_confirmation}
+                onChangeText={password_confirmation => this.setState({ password_confirmation })}
+                secureTextEntry={true}
+                placeholder="Re-Enter Password"
+                style={RegisterStyles.input}
+              />
+
             </View>
 
             <TouchableOpacity
               style ={RegisterStyles.registerContainer}
               onPress={() => this.props.navigator.push({ name : 'signup' })}
-              onPress={() => this.register()}
+              onPress={() => this.onRegisterPressed()}
             >
-              <Text style={RegisterStyles.registerText}>Level Up</Text>
+              <Text style={RegisterStyles.registerText}>Get Started</Text>
             </TouchableOpacity>
 
           </View>
@@ -201,7 +196,6 @@ const RegisterStyles = StyleSheet.create({
   },
   registerText: {
     fontSize: 16,
-    fontWeight: 'bold',
     textAlign: 'center',
     color: "#fff"
   },

@@ -13,6 +13,10 @@ const couple = require('../images/couple.png');
 
 export default class SubmitScreen extends Component {
 
+  submitting() {
+    console.log(this);
+  }
+
   static navigationOptions = ({ navigation }) => ({
     title: 'Submit',
     headerLeft:
@@ -44,6 +48,7 @@ export default class SubmitScreen extends Component {
             <Button
               title='Submit'
               color='#fff'
+              onPress={this.submitting.bind(this)}
             />
 
           </View>

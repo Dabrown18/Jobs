@@ -24,7 +24,7 @@ import DualPicker from '../components/DualPicker';
 import Header from '../components/Header';
 import Category from './CategoryScreen';
 
-const logo = require('../images/brokenHeart.png')
+const logo = require('../images/brokenHeart.png');
 
 export default class StoryScreen extends Component {
 
